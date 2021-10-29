@@ -77,6 +77,13 @@
 
         <!-- 棚 -->
         <a-entity gltf-model="#Shelf" position="30 -40 -60" scale="15 10 10"></a-entity>
+      
+        <!--  カメラにtextの文字  -->
+        <a-entity camera look-controls position="0 1.6 0">
+           <a-text id="txt" value="test" position="0 0 -1" scale="0.5 0.5 0.5"
+           align="center" color="#000000"></a-text>
+        </a-entity>
+      
 
         <!-- マックのロゴ -->
         <a-sphere position="0 100 -150" radius="7" rotation="0 0 0" radius="1.25" src="#McDonald's"
@@ -206,5 +213,25 @@
 
 
     </a-scene>
+    <script>
+        const ctlL = document.getElementById("ctlL");
+        const ctlR = document.getElementById("ctlR");
+        const txt = document.getElementById("txt");
+      
+        //Trigger Pressed
+        ctlL.addEventListener('triggerdown', function (event) {
+            txt.setAttribute("value", "Left trigger down");
+        });
+        ctlR.addEventListener('triggerdown', function (event) {
+            txt.setAttribute("value", "Right trigger down");
+        });
+        //Trigger Released
+        ctlL.addEventListener('triggerup', function (event) {
+            txt.setAttribute("value", "Left trigger up");
+        });
+        ctlR.addEventListener('triggerup', function (event) {
+            txt.setAttribute("value", "Right trigger up");
+        });
+    </script>
   </body>
 </html>
