@@ -216,20 +216,20 @@
         const txt = document.getElementById("txt");
       
         //Trigger Pressed
-        ctlL.addEventListener('triggerdown', function (event) {
-            txt.setAttribute("value", "Left trigger down");
+        ctlL.addEventListener('click', function (event) {
+            document.location.href = "McDonald's.html";
         });
-        ctlR.addEventListener('triggerdown', function (event) {
-            txt.setAttribute("value", "Right trigger down");
+        ctlR.addEventListener('click', function (event) {
+            document.location.href = "McDonald's.html";
         });
-        //Trigger Released
-        ctlL.addEventListener('triggerup', function (event) {
-            txt.setAttribute("value", "Left trigger up");
-        });
-        ctlR.addEventListener('triggerup', function (event) {
-            txt.setAttribute("value", "Right trigger up");
-        });
-        </script>
+//         //Trigger Released
+//         ctlL.addEventListener('triggerup', function (event) {
+//             txt.setAttribute("value", "Left trigger up");
+//         });
+//         ctlR.addEventListener('triggerup', function (event) {
+//             txt.setAttribute("value", "Right trigger up");
+//         });
+//         </script>
 
 
     </a-scene>
