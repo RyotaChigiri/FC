@@ -4,15 +4,6 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   </head>
   <body>
-    <!-- コントローラー -->
-    <a-entity id="ctlL" laser-controls="hand: left"></a-entity>
-    <a-entity id="ctlR" laser-controls="hand: right"></a-entity>
-    
-    <!--  カメラにtextの文字  -->
-    <a-entity camera look-controls position="0 1.6 0">
-       <a-text id="txt" value="test" position="0 0 -1" scale="0.5 0.5 0.5"
-       align="center" color="#000000"></a-text>
-    </a-entity>
     
     <script>
       AFRAME.registerComponent('click-change', {
@@ -63,6 +54,15 @@
     </script>
 
     <a-scene>
+        <!-- コントローラー -->
+      <a-entity id="ctlL" laser-controls="hand: left"></a-entity>
+      <a-entity id="ctlR" laser-controls="hand: right"></a-entity>
+
+      <!--  カメラにtextの文字  -->
+      <a-entity camera look-controls position="0 1.6 0">
+         <a-text id="txt" value="test" position="0 0 -1" scale="0.5 0.5 0.5"
+         align="center" color="#000000"></a-text>
+      </a-entity>
         <a-assets>
           <a-assets-item id="shopmall" src="CG/shop/scene.gltf"</a-assets-item>
           <img id="McDonald's" src="Image/MAC.jpg">
