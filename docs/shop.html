@@ -4,6 +4,16 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   </head>
   <body>
+    <!-- コントローラー -->
+    <a-entity id="ctlL" laser-controls="hand: left"></a-entity>
+    <a-entity id="ctlR" laser-controls="hand: right"></a-entity>
+    
+    <!--  カメラにtextの文字  -->
+    <a-entity camera look-controls position="0 1.6 0">
+       <a-text id="txt" value="test" position="0 0 -1" scale="0.5 0.5 0.5"
+       align="center" color="#000000"></a-text>
+    </a-entity>
+    
     <script>
       AFRAME.registerComponent('click-change', {
         init: function () {
@@ -76,14 +86,7 @@
         <a-entity gltf-model="#shopmall" position="0 40 -150" scale="4 4 4"></a-entity>
 
         <!-- 棚 -->
-        <a-entity gltf-model="#Shelf" position="30 -40 -60" scale="15 10 10"></a-entity>
-      
-        <!--  カメラにtextの文字  -->
-        <a-entity camera look-controls position="0 1.6 0">
-           <a-text id="txt" value="test" position="0 0 -1" scale="0.5 0.5 0.5"
-           align="center" color="#000000"></a-text>
-        </a-entity>
-      
+        <a-entity gltf-model="#Shelf" position="30 -40 -60" scale="15 10 10"></a-entity>           
 
         <!-- マックのロゴ -->
         <a-sphere position="0 100 -150" radius="7" rotation="0 0 0" radius="1.25" src="#McDonald's"
@@ -102,11 +105,7 @@
           position="10 -25 -80" radius="4" rotation="0 0 0" src="#Ebifileo"
           animation = "property: rotation; to: 0 360 0; easing: linear;"
         ></a-sphere>
-      
-        <!-- コントローラー -->
-        <a-entity id="ctlL" laser-controls="hand: left"></a-entity>
-        <a-entity id="ctlR" laser-controls="hand: right"></a-entity>
-
+     
         <!-- ハンバーガー -->
         <a-entity click-change gltf-model="#humburgur" position="28 -36 -60" rotation="0 15 0" scale="0.5 0.5 0.5"></a-entity>
 
