@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <script>
+      AFRAME.registerComponent('click-change', {
+        init: function () {
+          this.el.addEventListener('click', (event)=> {
+              //クリック時の処理
+              console.log("エビフィレオがClickされました");
+              document.location.href = "McDonald's.html";
+          });
+        }
+      });
+    </script>
+
+    <script>
+      AFRAME.registerComponent('click-juice', {
+        init: function () {
+          this.el.addEventListener('click', (event)=> {
+              //クリック時の処理
+              console.log("ジュースがClickされました");
+              document.location.href = "McDonald's.html";
+          });
+        }
+      });
+    </script>
+
+    <script>
+      AFRAME.registerComponent('click-potato', {
+        init: function () {
+          this.el.addEventListener('click', (event)=> {
+              //クリック時の処理
+              console.log("ポテトがClickされました");
+              document.location.href = "McDonald's.html";
+          });
+        }
+      });
+    </script>
+
+    <script>
+      AFRAME.registerComponent('clickMos', {
+        init: function () {
+          this.el.addEventListener('click', (event)=> {
+              //クリック時の処理
+              console.log("Mosバーガーの商品がClickされました");
+              document.location.href = "Mos.html";
+          });
+        }
+      });
+    </script>
+
+    <a-scene>
+        <a-assets>
+          <a-assets-item id="shopmall" src="CG/shop/scene.gltf"</a-assets-item>
+          <img id="McDonald's" src="Image/MAC.jpg">
+          <img id="Ebifileo" src="Image/Ebi.jpg">
+          <a-assets-item id="juice1" src="CG/juice/scene.gltf"</a-assets-item>
+          <a-assets-item id="Peach" src="CG/peachJuice/scene.gltf"</a-assets-item>
+          <a-assets-item id="Shelf" src="CG/shelf/scene.gltf"</a-assets-item>
+          <a-assets-item id="humburgur" src="CG/humburgur/scene.gltf"</a-assets-item>
+          <a-assets-item id="potato" src="CG/potato/scene.gltf"</a-assets-item>
+          <a-assets-item id="drink" src="CG/drink/scene.gltf"</a-assets-item>
+          <a-assets-item id="clerk" src="CG/clerk/scene.gltf"</a-assets-item>
+          <audio id="music" src="sound/City_Ambi-Festival01-1.mp3"></audio>
+          <!-- モスバーガー -->
+          <a-assets-item id="shopmall1" src="CG/shop1/scene.gltf"</a-assets-item>
+          <img id="Mosburgur" src="Image/Mosburgur.png">
+          <a-assets-item id="mosburgur" src="CG/Mos-humburgur/scene.gltf"</a-assets-item>
+          <a-assets-item id="soda" src="CG/soda/scene.gltf"</a-assets-item>
+        </a-assets>
+        
+        <!-- 全体のショップモール-->
+        <a-entity gltf-model="#shopmall" position="0 40 -150" scale="4 4 4"></a-entity>
+
+        <!-- 棚 -->
+        <a-entity gltf-model="#Shelf" position="30 -40 -60" scale="15 10 10"></a-entity>
+
+        <!-- マックのロゴ -->
+        <a-sphere position="0 100 -150" radius="7" rotation="0 0 0" radius="1.25" src="#McDonald's"
+          animation = "property: rotation;
+          to: 0 360 0;
+          loop: true;
+          dur: 20000;
+          easing: linear;"
+          sound="src: #music; autoplay: true; loop: true"
+        ></a-sphere>
+
+        <!-- エビフィレオの球体 -->
+        <a-sphere 
+          more-information
+          click-change
+          position="10 -25 -80" radius="4" rotation="0 0 0" src="#Ebifileo"
+          animation = "property: rotation; to: 0 360 0; easing: linear;"
+        ></a-sphere>
+
+        <!-- ハンバーガー -->
+        <a-entity click-change gltf-model="#humburgur" position="28 -36 -60" rotation="0 15 0" scale="0.5 0.5 0.5"></a-entity>
+
+        <!-- ポテト -->
+        <a-entity click-potato gltf-model="#potato" position="35 -36 -60" scale="3 3 3"></a-entity>
+
+        <!-- ドリンク -->
+        <a-entity click-juice gltf-model="#drink" position="20 -36 -60" scale="30 30 30"></a-entity>
+
+        <!-- 手前のジュース -->
+        <a-entity click-juice gltf-model="#juice1" position="45 -25 -80" scale="4 4 4"></a-entity>
+
+        <!-- 店舗内のジュース-->
+        <a-entity click-juice gltf-model="#juice1" position="0 -25 -125" scale="4 4 4"></a-entity>
+
+        <!-- ピーチジュース -->
+        <a-entity click-juice gltf-model="#Peach" position="-3 -30 -75" scale="0.7 0.7 0.7 "></a-entity>
+
+        <!-- 女性店員 -->
+        <a-entity gltf-model="#clerk" position="5 -30 -200" scale="0.5 0.5 0.5"></a-entity>
+
+        <!-- モスバーガー -->
+
+        <!-- ショップモール-->
+        <a-entity gltf-model="#shopmall1" position="140 -40 -150" scale="1 1 1"></a-entity>
+
+        <!-- モスバーガーのロゴ -->
+        <a-sphere position="140 20 -150" radius="7" rotation="0 0 0" src="#Mosburgur"
+          animation = "property: rotation;
+          to: 0 360 0;
+          loop: true;
+          dur: 20000;
+          easing: linear;"
+          sound="src: #music; autoplay: true; loop: true"
+        ></a-sphere>
+
+        <!-- モスバーガー本体 -->
+        <a-entity clickMos gltf-model="#mosburgur" position="110 -40 -105" rotation="0 0 0" scale="0.5 0.5 0.5"></a-entity>
+
+        <!-- ソーダドリンク-->
+        <a-entity clickMos gltf-model="#soda" position="170 -40 -110" scale="0.7 0.7 0.7"></a-entity>
+
+        <!-- 空の色-->
+        <a-sky color="#9FB79F"></a-sky>
+
+        <a-entity cursor="rayOrigin: mouse"></a-entity>
+        <!-- 表示するテキスト(品物の詳細)-->
+        <!-- 英数文字しか表示できない-->
+        <a-text value="These are McDonald's items!! Click Menu!!"
+            position="0 35 -85"
+            align="center"
+            width="55"
+            color="#3C513C">
+        </a-text>
+
+        <!-- 平面を表示 -->
+        <a-camera>
+          <a-cursor far="1" fuse="true" fuse-timeout="5000"></a-cursor>  
+          <!-- ハンバーガーにマウスを乗せた際に情報表示 -->
+          <a-text id="Humburgur_information" value="↓Let's click to get burgur Information↓" width="30" position="-70 30 -50" color="black"></a-text>  
+          <a-plane id="plane" position="-60 30 -50" rotation="0 0 0" width="25" height="15" color="#FFA500"></a-plane>
+          <a-text id="Juice_information" value="↓Let's click to get Juice Information↓" width="30" position="-70 15 -50" color="black"></a-text>  
+          <a-plane id="plane2" position="-60 15 -50" rotation="0 0 0" width="25" height="15" color="#9ACD32"></a-plane>
+            <!-- 右上の情報 -->
+          <a-text id="Mos_information" value="↓Let's click to get Mosburgur Information↓" width="30" position="48 35 -50" color="black"></a-text>  
+          <a-plane id="plane3" position="60 35 -50" rotation="0 0 0" width="25" height="15" color="#FFA500"></a-plane>   
+        </a-camera>
+
+        <script>
+          const Texter = document.getElementById("Humburgur_information");
+          const Information = document.getElementById("plane");
+          // マウスカーソルでクリックした時などのイベント発生時の処理を設定
+          Information.addEventListener("click", (e) => {
+            var menu = new Array('Menu: \nShrimp Phileo, \nTsukimi Burger, \nCheeseburger', 'Fee: 140 yen to 390 yen', 'Click on the hamburger for the item \nif you want to see details');
+            var random = Math.floor( Math.random() * menu.length );
+            Texter.setAttribute("value", menu[random]);
+              // <a-text value="a" width="20" position="28 -25 -60" color="black"></a-text>   
+          });
+        </script>
+
+        <script>
+          const Texten = document.getElementById("Juice_information");
+          const juice_Information = document.getElementById("plane2");
+          // マウスカーソルでクリックした時などのイベント発生時の処理を設定
+          juice_Information.addEventListener("click", (e) => {
+            var menu2 = new Array('Menu: \nOrangejuice, \nKora', 'Fee: 100 yen to 270 yen', 'Click on the juice for the item \nif you want to see details');
+            var random2 = Math.floor( Math.random() * menu2.length );
+            Texten.setAttribute("value", menu2[random2]);
+              // <a-text value="a" width="20" position="28 -25 -60" color="black"></a-text>   
+          });
+        </script>
+
+        <script>
+          const Texton = document.getElementById("Mos_information");
+          const mos_Information = document.getElementById("plane3");
+          // マウスカーソルでクリックした時などのイベント発生時の処理を設定
+          mos_Information.addEventListener("click", (e) => {
+            var menu3 = new Array('Menu: \nMosburgur, \nsoda', 'Fee: 120 yen to 220 yen', 'Click on the burgur or soda for the item \nif you want to see details');
+            var random3 = Math.floor( Math.random() * menu3.length );
+            Texton.setAttribute("value", menu3[random3]);
+              // <a-text value="a" width="20" position="28 -25 -60" color="black"></a-text>   
+          });
+        </script>
+
+
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>マクドナルドメニュー</title>
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+        <script src="https://unpkg.com/aframe-event-set-component@4.1.2/dist/aframe-event-set-component.min.js"></script>
+        <!-- csvダウンロード用 -->
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    </head>
+
+    <body>
+    <!-- header -->
+    <header>
+        <h1 class="headline">
+            <a>McDonald's Menu 商品をクリック！！</a>
+        </h1>
+    </header>
+        <!-- ハンバーガーメニュー -->
+        <div id="outline">
+            <div class="header"><p>McDonald's humburgur</p></div>
+        </div>
+
+        <!-- コメントアウト・・Command + / -->
+        <div class="sample">
+            <div class="item"><a href="https://www.mcdonalds.co.jp/products/1090/" target="_blank"><img id="Ebi" src="Image/Ebi.jpg" alt="エビフィレオ" title="エビフィレオ" width="250" height="250"></a><p>エビフィレオ</p></div>
+            <div class="item"><a href="https://www.mcdonalds.co.jp/products/6200/" target="_blank"><img id="Tsukimi" src="Image/Tsukimi.jpg" alt="月見バーガー" title="月見バーガー" width="250" height="250"></a><p>月見バーガー</p></div>
+            <!-- <div class="item"><a href="https://www.mcdonalds.co.jp/products/1020/" target="_blank"><img id="cheese" src="Image/cheese.jpg" alt="チーズバーガー" title="チーズバーガー" width="250" height="250"></a><p>チーズバーガー</p></div> -->
+            <div class="item"><a href="https://www.mcdonalds.co.jp/products/1210/" target="_blank"><img id="Big" src="Image/Big.jpg" alt="ビッグマック" title="ビッグマック" width="250" height="250"></a><p>ビッグマック</p></div>
+            <div class="item"><a href="https://www.mcdonalds.co.jp/products/1070/" target="_blank"><img id="Teriyaki" src="Image/Teriyaki.jpg" alt="てりやきマックバーガー" title="てりやきマックバーガー" width="250" height="250"></a><p>てりやきマックバーガー</p></div>
+            <div class="item"><a href="https://www.mcdonalds.co.jp/products/1360/" target="_blank"><img id="Double" src="Image/Double.png" alt="ダブルチーズバーガー" title="ダブルチーズバーガー" width="250" height="250"></a><p>ダブルチーズバーガー</p></div>
+        </div>
+
+        <!-- ジュースメニュー -->
+        <div id="outline">
+            <div class="header"><p>McDonald's juice</p></div>
+        </div>
+
+        <div class="sample">
+            <div class="item2"><a href="https://www.mcdonalds.co.jp/products/3320/" target="_blank"><img id="orangejuice" src="Image/orangejuice.png" alt="オレンジジュース" title="オレンジジュース"></a><p>オレンジジュース</p></div>
+            <div class="item2"><a href="https://www.mcdonalds.co.jp/products/3120/" target="_blank"><img id="kora" src="Image/kora.png" alt="コーラ" title="コーラ"></a><p>コカ・コーラ</p></div>
+        </div>
+
+        <button id="output">購入</button>
+        <style>
+        .sample {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        .sample .item {
+            flex: none;
+            margin: 8px;
+            text-align: center;
+        }
+        .sample .item2 {
+            flex: none;
+            margin: 5px;
+            text-align: center;
+        }
+        .header{
+            text-align: center;
+            size: 5px;
+        }
+        #outline{
+            width: 100%;
+            border: solid 25px #10ff00;
+        }
+
+        #output{
+            width:10%
+        }
+
+        </style>
+        <!-- スクリプト -->
+        <a style="display: none" id="downloader" href="#"></a>
+        <script>
+
+            var Ebi_count = 0;
+            var Tsukimi_count = 0;
+            var cheese_count = 0;
+            var Big_count = 0;
+            var Teriyaki_count = 0;
+            var Double_count = 0;
+            var orangeiuice_count = 0;
+            var kora_count = 0;
+    
+            const score1 = document.getElementById("Ebi");
+            const score2 = document.getElementById("Tsukimi");
+            const score3 = document.getElementById("Big");
+            const score4 = document.getElementById("Teriyaki");
+            const score5 = document.getElementById("Double");
+            const score6 = document.getElementById("orangejuice");
+            const score7 = document.getElementById("kora");
+            // const score4 = document.getElementById("orangejuice");
+            // const score5 = document.getElementById("kora");
+
+            const Outputs = document.getElementById("output");
+    
+            // マウスカーソルでクリックした時などのイベント発生時の処理を設定
+            score1.addEventListener("click", (e) => {
+                Ebi_count += 390;
+                // scoreText1.setAttribute("value", Ebi_count);
+            });
+    
+            score2.addEventListener("click", (e) => {
+                Tsukimi_count += 340;
+                // scoreText2.setAttribute("value", Tsukimi_count);
+            });
+
+            score3.addEventListener("click", (e) => {
+                Big_count += 390;
+                // scoreText3.setAttribute("value", cheese_count);
+            });
+
+            score4.addEventListener("click", (e) => {
+                Teriyaki_count += 340;
+                // scoreText4.setAttribute("value", Teriyaki_count);
+            });
+
+            score5.addEventListener("click", (e) => {
+                Double_count += 340;
+                // scoreText5.setAttribute("value", Double_count);
+            });
+    
+            // score3.addEventListener("click", (e) => {
+                // cheese_count += 200;
+                // scoreText3.setAttribute("value", cheese_count);
+            // });
+
+            // score6.addEventListener("click", (e) => {
+            //     orangejuice_count += 150;
+            //     // scoreText3.setAttribute("value", orangejuice_count);
+            // });
+
+            // score7.addEventListener("click", (e) => {
+            //     kora_count += 100;
+            //     // scoreText3.setAttribute("value", kora_count);
+            // });
+
+            const csv_download_text = document.getElementById("downloader");
+    
+            //現在時刻の取得
+            var now = new Date();
+            Outputs.addEventListener("click", (e) => {
+                $.getJSON("/ajax?id=" + now.getTime() + "&score1=" + Ebi_count + "&score2=" + Tsukimi_count + "&score3=" + Big_count + "&score4=" + Teriyaki_count + "&score5=" + Double_count);
+            })
+        </script>
+    </body>
+</html>
+
+<!--  + "&score6=" + orangejuice_count + "&score7=" + kora_count -->

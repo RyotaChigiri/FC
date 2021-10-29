@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <button id="btn">追加</button>
+        <ul id= "list"></ul>
+    </body>
+    <script>
+        //ここにjavascriptコードを記載
+        const list = document.getElementById('list');
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', () => {
+        //li要素を生成する
+        const li = document.createElement('li');
+          //li要素にテキストを追加する
+        li.textContent = 'これはリスト要素です';
+          //li要素をul要素内に追加して表示する
+        list.appendChild(li);
+        })
+    </script>
+</html>

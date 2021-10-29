@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>モスバーガーメニュー</title>
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+        <script src="https://unpkg.com/aframe-event-set-component@4.1.2/dist/aframe-event-set-component.min.js"></script>
+        <!-- csvダウンロード用 -->
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    </head>
+
+    <body>
+    <!-- header -->
+    <header>
+        <h1 class="headline">
+            <a>Mos's Menu 商品をクリック！！</a>
+        </h1>
+    </header>
+        <!-- ハンバーガーメニュー -->
+        <div id="outline">
+            <div class="header"><p>Mos's humburgur</p></div>
+        </div>
+
+        <!-- コメントアウト・・Command + / -->
+        <div class="sample">
+            <div class="item"><a href="https://www.mos.jp/cp/interview/mosburger/" target="_blank"><img id="bargur" src="Image/Mosbar.png" alt="モスバーガー" title="モスバーガー"></a><p>モスバーガー</p></div>
+        </div>
+
+        <!-- ジュースメニュー -->
+        <div id="outline">
+            <div class="header"><p>Mos's juice</p></div>
+        </div>
+
+        <div class="sample">
+            <div class="item2"><a href="https://www.mos.jp/menu/detail/P00007/34/" target="_blank"><img id="soda" src="Image/soda.jpg" alt="メロンソーダ" title="メロンソーダ"></a><p>メロンソーダ</p></div>
+        </div>
+
+        <button id="output">購入</button>
+        <style>
+        .sample {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        .sample .item {
+            flex: none;
+            margin: 8px;
+            text-align: center;
+        }
+        .sample .item2 {
+            flex: none;
+            margin: 5px;
+            text-align: center;
+        }
+        .header{
+            text-align: center;
+            size: 5px;
+        }
+        #outline{
+            width: 90%;
+            border: solid 10px #10ff00;
+        }
+
+        #output{
+            width:10%
+        }
+
+        </style>
+        <!-- スクリプト -->
+        <a style="display: none" id="downloader" href="#"></a>
+        <!-- <script>
+
+            var burgur_count = 0;
+            var Tsukimi_count = 0;
+            var cheese_count = 0;
+            var orangeiuice_count = 0;
+            var kora_count = 0;
+    
+            const score1 = document.getElementById("Ebi");
+            const score2 = document.getElementById("Tsukimi");
+            // const score4 = document.getElementById("orangejuice");
+            // const score5 = document.getElementById("kora");
+
+            const Outputs = document.getElementById("output");
+    
+            // マウスカーソルでクリックした時などのイベント発生時の処理を設定
+            score1.addEventListener("click", (e) => {
+                Ebi_count += 300;
+                // scoreText1.setAttribute("value", Ebi_count);
+            });
+    
+            score2.addEventListener("click", (e) => {
+                Tsukimi_count += 400;
+                // scoreText2.setAttribute("value", Tsukimi_count);
+            });
+
+            const csv_download_text = document.getElementById("downloader");
+    
+            //現在時刻の取得
+            var now = new Date();
+            Outputs.addEventListener("click", (e) => {
+                $.getJSON("/ajax?id=" + now.getTime() + "&score1=" + Ebi_count + "&score2=" + Tsukimi_count + "&score3=" + cheese_count);
+            }) -->
+        </script>
+    </body>
+</html>
+
+<!--  + "&score4=" + orangejuice_count + "&score5=" + kora_count -->

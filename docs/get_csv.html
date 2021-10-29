@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CSV OUTPUT Client Download</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@4.1.2/dist/aframe-event-set-component.min.js"></script>
+
+    <!-- csvダウンロード用 -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+</head>
+
+<body>
+    <a-scene>
+        <a-assets>
+            <audio id="blip" src="BGM/sound29.wav"></audio>
+
+            <!-- 注視ボックスの形状 -->
+            <a-mixin id="cube" geometry="primitive: box"></a-mixin>
+
+            <!-- マウスカーソルや視線リングが当たったとき、外れたときのカラー設定 -->
+            <a-mixin id="hoverColor" event-set__mouseenter="material.color: #CC435F"></a-mixin>
+            <a-mixin id="leaveColor" event-set__mouseleave="material.color: #9DE0AD"></a-mixin>
+
+        </a-assets>
+
+        <!-- 1つ目の注視ボックス（チェックポイント）　-->
+        <a-entity position="0 1 -5">
+            <a-entity id="score_box1" class="intersectable" mixin="green cube hoverColor selectColor leaveColor"
+                sound="on: mouseenter; src: #blip">
+            </a-entity>
+        </a-entity>
+
+        <!-- 2つ目の注視ボックス（チェックポイント）　-->
+        <a-entity position="5 1 -10">
+            <a-entity id="score_box2" class="intersectable" mixin="green cube hoverColor selectColor leaveColor"
+                sound="on: mouseenter; src: #blip">
+            </a-entity>
+        </a-entity>
+
+        <!-- 3つ目の注視ボックス（チェックポイント）　-->
+        <a-entity position="10 1 -10">
+            <a-entity id="score_box3" class="intersectable" mixin="green cube hoverColor selectColor leaveColor"
+                sound="on: mouseenter; src: #blip">
+            </a-entity>
+        </a-entity>
+
+        <!-- CSV ダウンロード用ボックス -->
+        <a-entity position="-5 1 -5">
+            <a-entity id="csv_download_box" class="intersectable" mixin="green cube hoverColor selectColor leaveColor"
+                sound="on: mouseenter; src: #blip">
+            </a-entity>
+        </a-entity>
+
+
+        <!-- 地面の大きさ・カラー設定 -->
+        <a-plane position="0 0 0" rotation="-90 0 0" width="200" height="200" color="#111111" shadow>
+        </a-plane>
+
+        <!-- マウス操作も可能にする設定 -->
+        <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable"></a-entity>
+
+        <!-- プレイヤーの視点 -->
+        <a-camera>
+            <!--　視線リング の表示-->
+            <a-cursor>
+            </a-cursor>
+            <!-- カメラ内にテキストを表示 -->
+            <a-text id="score_text1" value="0" position="-0.39 0.3 -1" color="black">
+            </a-text>
+            <a-text id="score_text2" value="0" position="0.39 0.3 -1" color="black">
+            </a-text>
+            <a-text id="score_text3" value="0" position="0.78 0.3 -1" color="black">
+            </a-text>
+        </a-camera>
+
+    </a-scene>
+    <a style="display: none" id="downloader" href="#"></a>
+    <script>
+
+        var gaze_box1_count = 0;
+        var gaze_box2_count = 0;
+        var gaze_box3_count = 0;
+
+        const scoreBox1 = document.getElementById("score_box1");
+        const scoreBox2 = document.getElementById("score_box2");
+        const scoreBox3 = document.getElementById("score_box3");
+
+
+        const scoreText1 = document.getElementById("score_text1");
+        const scoreText2 = document.getElementById("score_text2");
+        const scoreText3 = document.getElementById("score_text3");
+
+        const csvBox = document.getElementById("csv_download_box");
+
+
+
+        // マウスカーソルでクリックした時などのイベント発生時の処理を設定
+        scoreBox1.addEventListener("click", (e) => {
+            gaze_box1_count += 1;
+            scoreText1.setAttribute("value", gaze_box1_count);
+        });
+
+        scoreBox2.addEventListener("click", (e) => {
+            gaze_box2_count += 1;
+            scoreText2.setAttribute("value", gaze_box2_count);
+        });
+
+        scoreBox3.addEventListener("click", (e) => {
+            gaze_box3_count += 1;
+            scoreText3.setAttribute("value", gaze_box3_count);
+        });
+
+
+        const csv_download_text = document.getElementById("downloader");
+
+        //現在時刻の取得
+        var now = new Date();
+
+        csvBox.addEventListener("mouseenter", (e) => {
+            $.getJSON("/ajax?id=" + now.getTime() + "&score1=" + gaze_box1_count + "&score2=" + gaze_box2_count + "&score3=" + gaze_box3_count);
+        })
+
+
+    </script>
+
+</body>
+
+</html>
