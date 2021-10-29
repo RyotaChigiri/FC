@@ -54,15 +54,6 @@
     </script>
 
     <a-scene>
-        <!-- コントローラー -->
-      <a-entity id="ctlL" laser-controls="hand: left"></a-entity>
-      <a-entity id="ctlR" laser-controls="hand: right"></a-entity>
-
-      <!--  カメラにtextの文字  -->
-      <a-entity camera look-controls position="0 1.6 0">
-         <a-text id="txt" value="test" position="0 0 -1" scale="0.5 0.5 0.5"
-         align="center" color="#000000"></a-text>
-      </a-entity>
         <a-assets>
           <a-assets-item id="shopmall" src="CG/shop/scene.gltf"</a-assets-item>
           <img id="McDonald's" src="Image/MAC.jpg">
@@ -81,6 +72,16 @@
           <a-assets-item id="mosburgur" src="CG/Mos-humburgur/scene.gltf"</a-assets-item>
           <a-assets-item id="soda" src="CG/soda/scene.gltf"</a-assets-item>
         </a-assets>
+      
+        <!-- コントローラー -->
+        <a-entity id="ctlL" laser-controls="hand: left"></a-entity>
+        <a-entity id="ctlR" laser-controls="hand: right"></a-entity>
+
+        <!--  カメラにtextの文字  -->
+        <a-entity camera look-controls position="0 1.6 0">
+           <a-text id="txt" value="test" position="0 0 -1" scale="0.5 0.5 0.5"
+           align="center" color="#000000"></a-text>
+        </a-entity>
         
         <!-- 全体のショップモール-->
         <a-entity gltf-model="#shopmall" position="0 40 -150" scale="4 4 4"></a-entity>
